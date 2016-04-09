@@ -22,7 +22,92 @@
     <![endif]-->
   </head>
   <body>
-    <h1>Patient X</h1>
+    
+    <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">ESP-Band</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+      	<li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Patient <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Patient A</a></li>
+            <li><a href="#">Patient B</a></li>
+            <li><a href="#">Add Patient</a></li>
+            <li role="separator" class="divider"></li>
+          </ul>
+        </li>
+        <li class="active"><a href="#">Heart Rate <span class="sr-only">(current)</span></a></li>
+        <li><a href="#">Acceleration</a></li>
+        <li><a href="#">Data Analytics</a></li>
+        <li><a href="#">Medications</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">Logout</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Heart Rate</h3>
+  </div>
+  <div class="panel-body">
+    Heart Rate graphs go here
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Accerlation</h3>
+  </div>
+  <div class="panel-body">
+    Acceleration graphs go here
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Data Analytics</h3>
+  </div>
+  <div class="panel-body">
+    Reccomendations from Data Analytics go here
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading">Medications</div>
+
+  <!-- Table -->
+  <table class="table">
+    <tr>
+    	<th>Medication</th>
+    	<th>Amount</th>
+    	<th>Time</th>
+    	<th>Frequency</th>
+	</tr>
+	<tr>
+		<td>Med A</td>
+		<td>2</td>
+		<td>10:00pm</td>
+		<td>Daily</td>
+	</tr>
+  </table>
+</div>
+
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
