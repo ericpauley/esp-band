@@ -12,7 +12,7 @@
     </script>
 
     <!-- Bootstrap -->
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/bootstrap.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -24,7 +24,7 @@
   <body>
     
     <nav class="navbar navbar-default">
-  <div class="container-fluid">
+  <div id="navigation_bar" class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -42,11 +42,10 @@
       	<li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Patient <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#PatientA">Patient A</a></li>
-            <li role="separator" class="divider"></li>
+            <li><a href="#PatientA">Bill Gates</a></li>
           </ul>
         </li>
-        <li class="active"><a href="#heart_rate">Heart Rate <span class="sr-only">(current)</span></a></li>
+        <li><a href="#heart_rate">Heart Rate</a></li>
         <li><a href="#acceleration">Acceleration</a></li>
         <li><a href="#data">Data Analytics</a></li>
         <li><a href="#medication">Medications</a></li>
@@ -59,10 +58,24 @@
   </div><!-- /.container-fluid -->
 </nav>
 
-<h1>Patient A</h1>
+<div class="jumbotron">
+	<div class="row">
+		<div class="col-xs-6 col-md-3">
+  			<img id='patient' src="http://stanlemmens.nl/wp/wp-content/uploads/2014/07/bill-gates-wealthiest-person.jpg"/>
+		</div>
+		<div class="col-xs-6 col-md-3">
+  			<h1>Bill Gates</h1>
+  			<p>Age: 60</p>
+		</div>
+</div>
 
-<section id="heart_rate">
-	<div class="panel panel-default">
+<div> 
+	<p>
+	</p>
+</div>
+
+<section id='heart_rate'>
+	<div class="panel panel-primary">
 	  <div class="panel-heading">
 	    <h3 class="panel-title">Heart Rate</h3>
 	  </div>
@@ -73,7 +86,7 @@
 </section>
 
 <section id="acceleration">
-	<div class="panel panel-default">
+	<div class="panel panel-primary">
 	  <div class="panel-heading">
 	    <h3 class="panel-title">Accerlation</h3>
 	  </div>
@@ -84,7 +97,7 @@
 </section>
 
 <section id="data">
-	<div class="panel panel-default">
+	<div class="panel panel-primary">
 	  <div class="panel-heading">
 	    <h3 class="panel-title">Data Analytics</h3>
 	  </div>

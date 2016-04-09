@@ -1,3 +1,7 @@
+#patient {
+  width: 150px;
+  height: 200px;
+}
 /*!
  * Bootstrap v3.3.6 (http://getbootstrap.com)
  * Copyright 2011-2015 Twitter, Inc.
@@ -4508,10 +4512,10 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   background-color: transparent;
 }
 .navbar-default .navbar-text {
-  color: #777;
+  color: #8807f6;
 }
 .navbar-default .navbar-nav > li > a {
-  color: #777;
+  color: #8807f6;
 }
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
@@ -4967,12 +4971,13 @@ a.badge:focus {
 }
 .jumbotron h1,
 .jumbotron .h1 {
-  color: inherit;
+  color: #272241;
 }
 .jumbotron p {
   margin-bottom: 15px;
   font-size: 21px;
   font-weight: 200;
+  color: #8807f6;
 }
 .jumbotron > hr {
   border-top-color: #d5d5d5;
@@ -5704,19 +5709,19 @@ button.list-group-item-danger.active:focus {
   border-bottom-color: #ddd;
 }
 .panel-primary {
-  border-color: #337ab7;
+  border-color: #272241;
 }
 .panel-primary > .panel-heading {
   color: #fff;
-  background-color: #337ab7;
-  border-color: #337ab7;
+  background-color: #272241;
+  border-color: #272241;
 }
 .panel-primary > .panel-heading + .panel-collapse > .panel-body {
-  border-top-color: #337ab7;
+  border-top-color: #272241;
 }
 .panel-primary > .panel-heading .badge {
   color: #337ab7;
-  background-color: #fff;
+  background-color: #272241;
 }
 .panel-primary > .panel-footer + .panel-collapse > .panel-body {
   border-bottom-color: #337ab7;
