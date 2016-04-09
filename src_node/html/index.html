@@ -7,9 +7,6 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>HackPSU</title>
     <script src="/socket.io/socket.io.js"></script>
-    <script>
-      var socket = io();
-    </script>
 
     <!-- Bootstrap -->
     <link href="/css/bootstrap.css" rel="stylesheet">
@@ -22,7 +19,7 @@
     <![endif]-->
   </head>
   <body>
-    
+
     <nav class="navbar navbar-default">
   <div id="navigation_bar" class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -68,8 +65,17 @@
   			<p>Age: 60</p>
 		</div>
 </div>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Heart Rate</h3>
+  </div>
+  <div class="panel-body">
+    <div id="heartContainer" style="height: 300px; width:100%;">
+	</div>
+  </div>
+</div>
 
-<div> 
+<div>
 	<p>
 	</p>
 </div>
@@ -107,7 +113,7 @@
 	</div>
 </section>
 
-<section id="medication">	
+<section id="medication">
 	<div class="panel panel-default">
 	  <!-- Default panel contents -->
 	  <div class="panel-heading">Medications</div>
@@ -135,5 +141,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/canvasjs.min.js"></script>
+    <script src="js/charting.js"></script>
   </body>
 </html>

@@ -19,7 +19,7 @@ receiver.on('pmessage', function (pattern, channel, message) {
   message = parseInt(message)
   master.rpush("historical."+channel,message)
   master.ltrim("historical."+channel,-1000,-1)
-  io.emit({channel:channel,message:message})
+  io.emit(channel,message)
 });
 
 io.on('connection', function(socket){
@@ -28,7 +28,7 @@ io.on('connection', function(socket){
     for(var i in keys){
       master.lrange(keys[i],-1000,-1,function(err, items){
         for(var j in items){
-          io.emit({channel:/historical\.(.*)/.exec(keys[i])[1],message:parseInt(items[j])})
+          io.emit(/historical\.(.*)/.exec(keys[i])[1],parseInt(items[j]))
         }
       })
     }
