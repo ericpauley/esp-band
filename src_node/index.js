@@ -18,6 +18,7 @@ var io = require('socket.io')(http);
 receiver.on('pmessage', function (pattern, channel, message) {
   message = parseInt(message)
   master.rpush("historical."+channel,message)
+  master.ltrim("historical."+channel,-1000,-1)
   io.emit({channel:channel,message:message})
 });
 
