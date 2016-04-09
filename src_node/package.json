@@ -1,0 +1,8 @@
+{
+  "name": "node-band",
+  "version": "0.0.1",
+  "description": "Does stuff to the thing watch",
+  "dependencies": {
+    "express": "^4.10.2"
+  }
+}
