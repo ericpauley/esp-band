@@ -1,6 +1,11 @@
 #patient {
-  width: 150px;
+  width: 200px;
   height: 200px;
+}
+
+#logo {
+  width: 100px;
+  height: 25px;
 }
 /*!
  * Bootstrap v3.3.6 (http://getbootstrap.com)
@@ -4500,8 +4505,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
 }
 .navbar-default {
-  background-color: #f8f8f8;
-  border-color: #e7e7e7;
+  background-color: white;
+  border-color: #272241;
 }
 .navbar-default .navbar-brand {
   color: #777;
@@ -4512,10 +4517,10 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   background-color: transparent;
 }
 .navbar-default .navbar-text {
-  color: #8807f6;
+  color: #272241;
 }
 .navbar-default .navbar-nav > li > a {
-  color: #8807f6;
+  color: #272241;
 }
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
@@ -4967,7 +4972,7 @@ a.badge:focus {
   padding-bottom: 30px;
   margin-bottom: 30px;
   color: inherit;
-  background-color: #eee;
+  background-color: #c5cdf6;
 }
 .jumbotron h1,
 .jumbotron .h1 {
@@ -4977,7 +4982,7 @@ a.badge:focus {
   margin-bottom: 15px;
   font-size: 21px;
   font-weight: 200;
-  color: #8807f6;
+  color: #272241;
 }
 .jumbotron > hr {
   border-top-color: #d5d5d5;
@@ -5486,7 +5491,7 @@ button.list-group-item-danger.active:focus {
 .panel-title > .small,
 .panel-title > small > a,
 .panel-title > .small > a {
-  color: inherit;
+  color: #d41414;
 }
 .panel-footer {
   padding: 10px 15px;
@@ -5712,7 +5717,7 @@ button.list-group-item-danger.active:focus {
   border-color: #272241;
 }
 .panel-primary > .panel-heading {
-  color: #fff;
+  color: #d41414;
   background-color: #272241;
   border-color: #272241;
 }

@@ -24,13 +24,9 @@
   <div id="navigation_bar" class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">ESP-Band</a>
+      <a class="navbar-brand" href="#">
+      	<img id='logo' alt="Brand" src="ESPband logo (2).png">
+      </a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -64,20 +60,10 @@
   			<h1>Bill Gates</h1>
   			<p>Age: 60</p>
 		</div>
-</div>
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">Heart Rate</h3>
-  </div>
-  <div class="panel-body">
-    <div id="heartContainer" style="height: 300px; width:100%;">
+		<div class="col-xs-6 col-md-3">
+  			<img id='patient' src="ESP heart.png"/>
+		</div>
 	</div>
-  </div>
-</div>
-
-<div>
-	<p>
-	</p>
 </div>
 
 <section id='heart_rate'>
@@ -87,6 +73,8 @@
 	  </div>
 	  <div class="panel-body">
 	    Heart Rate graphs go here
+	    <div id="heartContainer" style="height: 300px; width:100%;">
+		</div>
 	  </div>
 	</div>
 </section>
@@ -114,7 +102,7 @@
 </section>
 
 <section id="medication">
-	<div class="panel panel-default">
+	<div class="panel panel-primary">
 	  <!-- Default panel contents -->
 	  <div class="panel-heading">Medications</div>
 
