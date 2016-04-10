@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Does stuff to the thing watch",
   "dependencies": {
-    "express": "^4.10.2",
+    "express": "^4.13.4",
     "redis": "^2.6.0-1",
     "socket.io": "^1.4.5"
   }
