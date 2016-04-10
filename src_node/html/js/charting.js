@@ -14,15 +14,26 @@ function dankItUp(id, channel, dataLength){
         valueFormatString:"0 bpm",
         title: "Heart Rate"               
       },
+      legend:{
+        verticalAlign: "bottom",
+        horizontalAlign: "center",
+        fontSize: 15,
+        fontFamily: "Lucida Sans Unicode"
+
+      },
       data: [{
   			type: "spline",
         markerType: "none",
+        name: "Heart Rate",
+        showInLegend: true,
   			dataPoints: dps
     		},
         {
           type: "spline",
           axisYType: "secondary",
           markerType: "none",
+          name: "Temperature",
+          showInLegend: true,
           dataPoints: dpstemp
         }
       ]
@@ -31,14 +42,14 @@ function dankItUp(id, channel, dataLength){
   	var xVal = 1300000000000;
 
     socket.on(channel, function(data){
-      var obj = JSON.parse(data);
+      console.log(data)
       dps.push({
         x: new Date(xVal),
-        y: obj.val
+        y: data.val
       });
       dpstemp.push({
         x: new Date(xVal),
-        y: obj.temp
+        y: data.temp
       });
       console.log(new Date(xVal))
       xVal+=1000000
