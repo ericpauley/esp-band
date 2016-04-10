@@ -57,6 +57,18 @@ io.on('connection', function(socket){
   })
 });
 
+socket.on('prescrip', function(message){
+  if (message === "get") {
+    master.get('prescrip', function(err, reply)) {
+      console.log(reply);
+    }
+  } else {
+    master.set('prescrip', message, function(err, reply) {
+      console.log("New prescription details set!")
+    }
+  }
+});
+
 http.listen(3000, function(){
   console.log('listening on *:3000');
 });
