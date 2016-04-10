@@ -5,11 +5,29 @@ function dankItUp(id, channel, dataLength){
   	var dps = []; // dataPoints
 
   	var chart = new CanvasJS.Chart(id,{
-  		data: [{
+      axisY2:{
+        valueFormatString:"0 °F",
+        title: "Temperature"     
+      },
+      axisY:{
+        valueFormatString:"0 bpm",
+        title: "Beats per Minute"               
+      },
+      data: [{
   			type: "spline",
         markerType: "none",
   			dataPoints: dps
-  		}]
+  		},
+      {
+        type: "spline",
+        axisYType: "secondary"
+        markerType: "none",
+        dataPoints: [
+          { x: 1300000000000, y: 30 },
+          { x: 1300001000000, y: 35 },
+          { x: 1300002000000, y: 45 }
+        ]
+      }]
   	});
 
   	var xVal = 1300000000000;
