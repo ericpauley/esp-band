@@ -14,8 +14,9 @@ while True:
     datagroup, value = [int(i) for i in data.split()]
     message = {"time":int(time.time()*1000),"val":value}
     if datagroup == 0:
+        if message['val'] > 1000:
+            message['val'] = 1000
         r.publish("waveform.bill", json.dumps(message))
     if datagroup == 1:
-        r.publish("bpm.bill", json.dumps(message))
-    if datagroup == 2:
+        print value
         r.publish("bpm_slow.bill", json.dumps(message))
