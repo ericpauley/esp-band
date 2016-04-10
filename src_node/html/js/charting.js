@@ -1,77 +1,130 @@
 var socket = io();
 
-function dankItUp(id, channel, dataLength){
+function bpmSlowChart(id, channel, dataLength){
+  var dps = []
+  var dpstemp = []
 
-  	var dps = []; // dataPoints
-    var dpstemp = [];
+  var chart = new CanvasJS.Chart(id,{
+    axisY2:{
+      valueFormatString:"0 °F",
+      title: "Temperature"
+    },
+    axisY:{
+      valueFormatString:"0 bpm",
+      title: "Heart Rate"
+    },
+    legend:{
+      verticalAlign: "bottom",
+      horizontalAlign: "center",
+      fontSize: 15,
+      fontFamily: "Lucida Sans Unicode"
 
-  	var chart = new CanvasJS.Chart(id,{
-      axisY2:{
-        valueFormatString:"0 °F",
-        title: "Temperature"
+    },
+    data: [{
+      type: "spline",
+      markerType: "none",
+      name: "Heart Rate",
+      showInLegend: true,
+      dataPoints: dps
       },
-      axisY:{
-        valueFormatString:"0 bpm",
-        title: "Heart Rate"
-      },
-      legend:{
-        verticalAlign: "bottom",
-        horizontalAlign: "center",
-        fontSize: 15,
-        fontFamily: "Lucida Sans Unicode"
-
-      },
-      data: [{
-  			type: "spline",
+      {
+        type: "spline",
+        axisYType: "secondary",
         markerType: "none",
-        name: "Heart Rate",
+        name: "Temperature",
         showInLegend: true,
-  			dataPoints: dps
-    		},
-        {
-          type: "spline",
-          axisYType: "secondary",
-          markerType: "none",
-          name: "Temperature",
-          showInLegend: true,
-          dataPoints: dpstemp
-        }
-      ]
-  	});
+        dataPoints: dpstemp
+      }
+    ]
+  });
 
-  	var xVal = 1300000000000;
-
-    socket.on(channel, function(data){
-      console.log(data)
-      dps.push({
-        x: new Date(xVal),
-        y: data.val
-      });
-      dpstemp.push({
-        x: new Date(xVal),
-        y: data.temp
-      });
-      console.log(new Date(xVal))
-      xVal+=1000000
-      if (dps.length > dataLength)
-  		{
-  			dps.shift()
-  		}
-      chart.render()
-    })
-    socket.on("prescrip", function (message){
-          displayPrescrip(message)
-          console.log(message)
-          createPrescrip()
-        })
-  	// generates first set of dataPoints
-  	chart.render()
+  socket.on(channel, function(data){
+    dps.push({
+      x: new Date(data.time),
+      y: data.val
+    });
+    dpstemp.push({
+      x: new Date(data.time),
+      y: data.temp
+    });
+    if (dps.length > dataLength)
+    {
+      dps.shift()
+      dpstemp.shift()
+    }
+    chart.render()
+  })
+  // generates first set of dataPoints
+  chart.render()
 }
 
-//takes JSON object containing prescription data from the
-//Node and displays it on the website
-function displayPrescrip() {
+function bpmChart(id, channel, dataLength){
+  var dps = []
 
+  var chart = new CanvasJS.Chart(id,{
+    axisY:{
+      valueFormatString:"0 bpm",
+      title: "Heart Rate"
+    },
+    data: [{
+      type: "spline",
+      markerType: "none",
+      name: "Heart Rate",
+      dataPoints: dps
+    },
+    ]
+  });
+
+  socket.on(channel, function(data){
+    dps.push({
+      x: new Date(data.time),
+      y: data.val
+    });
+    //chart.options.axisX.maximum = data.time
+    if (dps.length > dataLength)
+    {
+      dps.shift()
+    }
+    //chart.options.axisX.minimum = dps[0].x.getTime()
+    chart.render()
+  })
+  // generates first set of dataPoints
+  chart.render()
+}
+
+function waveformChart(id, channel, dataLength){
+  var dps = []
+
+  var chart = new CanvasJS.Chart(id,{
+    axisX:{valueFormatString:""},
+    data: [{
+      type: "spline",
+      markerType: "none",
+      name: "Heart Waveform",
+      dataPoints: dps
+    },
+    ]
+  });
+
+  socket.on(channel, function(data){
+    dps.push({
+      x: new Date(data.time),
+      y: data.val
+    });
+    if (dps.length > dataLength)
+    {
+      dps.shift()
+    }
+    chart.render()
+  })
+  // generates first set of dataPoints
+  chart.render()
+  /*setInterval(function(){
+    console.log("test")
+    	chart.options.axisX.maximum += 1000/60
+      chart.options.axisX.minimum += 1000/60
+      chart.render()
+  },1000/60)*/
 }
 
 //takes the values from the website new prescription slots and
@@ -88,5 +141,7 @@ function createPrescrip() {
 }
 
 window.onload = function () {
-  dankItUp("heartContainer", "waveform.lol", 500)
+  bpmSlowChart("bpmSlowContainer", "bpm_slow.bill", 500)
+  bpmChart("bpmContainer", "bpm.bill", 500)
+  waveformChart("waveformContainer", "waveform.bill", 500)
 }
