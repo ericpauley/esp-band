@@ -3,6 +3,7 @@ var socket = io();
 function dankItUp(id, channel, dataLength){
 
   	var dps = []; // dataPoints
+    var dpstemp = [];
 
   	var chart = new CanvasJS.Chart(id,{
       axisY2:{
@@ -11,31 +12,33 @@ function dankItUp(id, channel, dataLength){
       },
       axisY:{
         valueFormatString:"0 bpm",
-        title: "Beats per Minute"               
+        title: "Heart Rate"               
       },
       data: [{
   			type: "spline",
         markerType: "none",
   			dataPoints: dps
-  		},
-      {
-        type: "spline",
-        axisYType: "secondary"
-        markerType: "none",
-        dataPoints: [
-          { x: 1300000000000, y: 30 },
-          { x: 1300001000000, y: 35 },
-          { x: 1300002000000, y: 45 }
-        ]
-      }]
+    		},
+        {
+          type: "spline",
+          axisYType: "secondary",
+          markerType: "none",
+          dataPoints: dpstemp
+        }
+      ]
   	});
 
   	var xVal = 1300000000000;
 
     socket.on(channel, function(data){
+      var obj = JSON.parse(data);
       dps.push({
         x: new Date(xVal),
-        y: data
+        y: obj.val
+      });
+      dpstemp.push({
+        x: new Date(xVal),
+        y: obj.temp
       });
       console.log(new Date(xVal))
       xVal+=1000000

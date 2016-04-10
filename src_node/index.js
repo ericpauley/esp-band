@@ -1,4 +1,20 @@
 api_url = "http://apidev.accuweather.com/currentconditions/v1/335315.json?apikey=c3e7df4f2d6a40698cc75fac1b6a2c83"
+var getJSON = function(url) {
+  return new Promise(function(resolve, reject) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('get', url, true);
+    xhr.responseType = 'json';
+    xhr.onload = function() {
+      var status = xhr.status;
+      if (status == 200) {
+        resolve(xhr.response);
+      } else {
+        reject(status);
+      }
+    };
+    xhr.send();
+  });
+};
 
 express = require('express');
 
@@ -18,10 +34,14 @@ receiver.on("ready", function(){
 var io = require('socket.io')(http);
 
 receiver.on('pmessage', function (pattern, channel, message) {
-  message = parseInt(message)
+  message = {val:parseInt(message)}
   master.rpush("historical."+channel,message)
   master.ltrim("historical."+channel,-1000,-1)
-  io.emit(channel,message)
+  getJSON(api_url).then(function(data) {
+    var obj = JSON.parse(data.result);
+    message.temp = obj.Temperature.Imperial.Value
+    io.emit(channel,message)
+  });
 });
 
 io.on('connection', function(socket){
