@@ -104,26 +104,54 @@
 </section>
 
 <section id="medication">
-	<div class="panel panel-primary">
-	  <!-- Default panel contents -->
-	  <div class="panel-heading">Medications</div>
+  <div class="panel panel-primary">
+    <!-- Default panel contents -->
+    <div class="panel-heading">Medications</div>
 
-	  <!-- Table -->
-	  <table class="table">
-	    <tr>
-	    	<th>Medication</th>
-	    	<th>Amount</th>
-	    	<th>Time</th>
-	    	<th>Frequency</th>
-		</tr>
-		<tr>
-			<td>Med A</td>
-			<td>2</td>
-			<td>10:00pm</td>
-			<td>Daily</td>
-		</tr>
-	  </table>
-	</div>
+    <!-- Table -->
+    <table class="table" id="medTable">
+      <tr>
+        <th>Medication</th>
+        <th>Amount</th>
+        <th>Time</th>
+        <th>Frequency</th>
+    </tr>
+    <tr>
+      <td>Med A</td>
+      <td>2</td>
+      <td>10:00pm</td>
+      <td>Daily</td>
+      <td>
+        <button type="button" class="btn btn-default" onclick="deleteMed(this)">Delete</button>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="input-group">
+            <input id="newMed" type="text" class="form-control" placeholder="New Medication" aria-describedby="basic-addon1">
+        </div>
+      </td>
+      <td>
+        <div class="input-group">
+            <input id="newAmount" type="text" class="form-control" placeholder="Amount" aria-describedby="basic-addon1">
+        </div>
+      </td>
+      <td>
+        <div class="input-group">
+            <input id="newTime" type="text" class="form-control" placeholder="Time" aria-describedby="basic-addon1">
+        </div>
+      </td>
+      <td>
+        <div class="input-group">
+            <input id="newFreq" type="text" class="form-control" placeholder="Frequency" aria-describedby="basic-addon1">
+        </div>
+      </td>
+      <td>
+        <button type="button" class="btn btn-default" onclick="addMed()">Add</button>
+      </td>
+    </tr>
+    </table>
+  </div>
 </section>
 
 
@@ -133,5 +161,6 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/canvasjs.min.js"></script>
     <script src="js/charting.js"></script>
+    <script src="js/medecine.js"></script>
   </body>
 </html>

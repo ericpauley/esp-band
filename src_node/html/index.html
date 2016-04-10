@@ -121,7 +121,7 @@
 	  <div class="panel-heading">Medications</div>
 
 	  <!-- Table -->
-	  <table class="table">
+	  <table class="table" id="medTable">
 	    <tr>
 	    	<th>Medication</th>
 	    	<th>Amount</th>
@@ -134,20 +134,32 @@
 			<td>10:00pm</td>
 			<td>Daily</td>
 			<td>
-				<button type="button" class="btn btn-default">Delete</button>
+				<button type="button" class="btn btn-default" onclick="deleteMed(this)">Delete</button>
 			</td>
 		</tr>
 		<tr>
 			<td>
 				<div class="input-group">
-  					<input type="text" class="form-control" placeholder="New Medication" aria-describedby="basic-addon1">
+  					<input id="newMed" type="text" class="form-control" placeholder="New Medication" aria-describedby="basic-addon1">
 				</div>
 			</td>
-			<td>2</td>
-			<td>10:00pm</td>
-			<td>Daily</td>
 			<td>
-				<button type="button" class="btn btn-default">Add</button>
+				<div class="input-group">
+  					<input id="newAmount" type="text" class="form-control" placeholder="Amount" aria-describedby="basic-addon1">
+				</div>
+			</td>
+			<td>
+				<div class="input-group">
+  					<input id="newTime" type="text" class="form-control" placeholder="Time" aria-describedby="basic-addon1">
+				</div>
+			</td>
+			<td>
+				<div class="input-group">
+  					<input id="newFreq" type="text" class="form-control" placeholder="Frequency" aria-describedby="basic-addon1">
+				</div>
+			</td>
+			<td>
+				<button type="button" class="btn btn-default" onclick="addMed()">Add</button>
 			</td>
 		</tr>
 	  </table>
@@ -161,5 +173,6 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/canvasjs.min.js"></script>
     <script src="js/charting.js"></script>
+    <script src="js/medecine.js"></script>
   </body>
 </html>

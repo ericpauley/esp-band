@@ -44,25 +44,25 @@ receiver.on('pmessage', function (pattern, channel, message) {
 
 });
 
-io.on('connection', function(socket){
-  console.log('a user connected')
-  master.keys("historical.*", function(err,keys){
-    for(var i in keys){
-      master.lrange(keys[i],-1000,-1,function(err, items){
-        for(var j in items){
-          console.log(items[j], /historical\.(.*)/.exec(keys[i])[1])
-          socket.emit(/historical\.(.*)/.exec(keys[i])[1],JSON.parse(items[j]))
-        }
-      })
-    }
-  })
-  socket.emit("prescriptions", prescriptions)
+// io.on('connection', function(socket){
+//   console.log('a user connected')
+//   master.keys("historical.*", function(err,keys){
+//     for(var i in keys){
+//       master.lrange(keys[i],-1000,-1,function(err, items){
+//         for(var j in items){
+//           console.log(items[j], /historical\.(.*)/.exec(keys[i])[1])
+//           socket.emit(/historical\.(.*)/.exec(keys[i])[1],JSON.parse(items[j]))
+//         }
+//       })
+//     }
+//   })
+//   socket.emit("prescriptions", prescriptions)
 
-  socket.on('prescriptions', function(message){
-     prescriptions = message
-     io.emit("prescriptions", prescriptions)
-  });
-});
+//   socket.on('prescriptions', function(message){
+//      prescriptions = message
+//      io.emit("prescriptions", prescriptions)
+//   });
+// });
 
 http.listen(3000, function(){
   console.log('listening on *:3000');
