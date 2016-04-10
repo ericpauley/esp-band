@@ -1,3 +1,5 @@
+api_url = "http://apidev.accuweather.com/currentconditions/v1/335315.json?apikey=c3e7df4f2d6a40698cc75fac1b6a2c83"
+
 express = require('express');
 
 var app = express();
