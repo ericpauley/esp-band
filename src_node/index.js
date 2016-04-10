@@ -71,6 +71,11 @@ receiver.on('pmessage', function (pattern, channel, message) {
 
 io.on('connection', function(socket){
   console.log('a user connected');
+  master.set('prescrip', JSON.stringify({"Name":"adfasdfsad"}))
+  master.get('prescrip', function(err, reply) {
+    socket.emit("prescrip", reply)
+    console.log("initial prescrip data sent to client")
+  })
   master.keys("historical.*", function(err,keys){
     for(var i in keys){
       master.lrange(keys[i],-1000,-1,function(err, items){
@@ -83,17 +88,23 @@ io.on('connection', function(socket){
 });
 
 socket.on('prescrip', function(message){
-  if (message === "get") {
-    master.get('prescrip', function(err, reply)) {
-      console.log(reply);
-    }
-  } else {
-    master.set('prescrip', message, function(err, reply) {
-      console.log("New prescription details set!")
-    }
-  }
-});
+   console.log("BEEEETOOOOTCH")
+   if (message === "get") {
+       master.get('prescrip', function(err, reply) {
+         console.log(reply);
+       })
+     } else {
+       master.set('prescrip', JSON.stringify(message), function(err, reply) {
+         console.log("New prescription details set!")
+         master.get('prescrip', function(err, reply)
+       {
+         //socket.emit("prescrip", reply)
+       })
 
+       })
+     }
+   });
+});
 http.listen(3000, function(){
   console.log('listening on *:3000');
 });

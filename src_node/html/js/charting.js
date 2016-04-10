@@ -8,11 +8,11 @@ function dankItUp(id, channel, dataLength){
   	var chart = new CanvasJS.Chart(id,{
       axisY2:{
         valueFormatString:"0 °F",
-        title: "Temperature"     
+        title: "Temperature"
       },
       axisY:{
         valueFormatString:"0 bpm",
-        title: "Heart Rate"               
+        title: "Heart Rate"
       },
       legend:{
         verticalAlign: "bottom",
@@ -59,9 +59,32 @@ function dankItUp(id, channel, dataLength){
   		}
       chart.render()
     })
-
+    socket.on("prescrip", function (message){
+          displayPrescrip(message)
+          console.log(message)
+          createPrescrip()
+        })
   	// generates first set of dataPoints
   	chart.render()
+}
+
+//takes JSON object containing prescription data from the
+//Node and displays it on the website
+function displayPrescrip() {
+
+}
+
+//takes the values from the website new prescription slots and
+// creates a new JSON object from it, sending it over sockets to Node
+//Gets called anytime the 'new medication' button is pressed.
+function createPrescrip() {
+  var medication = ""
+  var amount = ""
+  var time = ""
+  var frequency = ""
+
+  var medJSON = {"medication": medication,"amount": amount ,"time": time,"frequency": frequency}
+  socket.emit("prescrip", JSON.stringify(medJSON))
 }
 
 window.onload = function () {
